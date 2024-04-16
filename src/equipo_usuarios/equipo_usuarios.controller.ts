@@ -22,6 +22,11 @@ export class EquipoUsuariosController {
     return this.equipoUsuariosService.findOne(+id);
   }
 
+  @Get('/Estudiantes/:id')
+  findEstudiante(@Param('id') id: string) {
+    return this.equipoUsuariosService.findEstudiante(+id);
+  }
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateEquipoUsuarioDto: UpdateEquipoUsuarioDto) {
     return this.equipoUsuariosService.update(+id, updateEquipoUsuarioDto);

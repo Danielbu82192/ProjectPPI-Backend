@@ -22,6 +22,11 @@ export class HoraSemanalController {
     return this.horaSemanalService.findOne(+id);
   }
 
+  @Get('/profesor/:id')
+  findProfesor(@Param('id') id: string) {
+    return this.horaSemanalService.findProfesor(+id);
+  }
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateHoraSemanalDto: UpdateHoraSemanalDto) {
     return this.horaSemanalService.update(+id, updateHoraSemanalDto);

@@ -13,8 +13,8 @@ export class HoraSemanal {
   @Column({ name: 'Horas_Asignadas', type: 'smallint' })
   horasAsignadas: number;
 
-  @Column({ name: 'Horas_Pendientes', type: 'smallint' })
-  horasPendientes: number;
+  @Column({ name: 'Horas_Pendientes', type: 'json' })
+  horasPendientes: object|null;
 
   @Column({ name: 'Salon_Asignado', type: 'varchar', length: 150 })
   salon: string;

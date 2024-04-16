@@ -26,20 +26,15 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(), // Importa el módulo de configuración para leer las variables de entorno
-    TypeOrmModule.forRootAsync({ // Usa TypeOrmModule.forRootAsync para configurar TypeORM de forma asíncrona
-      imports: [ConfigModule], // Importa ConfigModule para poder inyectar ConfigService
-      useFactory: (configService: ConfigService) => ({ // Usa una función factory para configurar TypeORM
-        type: 'postgres',
-        host: configService.get<string>('PGHOST'), // Usa ConfigService para obtener el valor de la variable de entorno
-        port: configService.get<number>('PGPORT'), // Usa ConfigService para obtener el valor de la variable de entorno
-        username: configService.get<string>('POSTGRES_USER'), // Usa ConfigService para obtener el valor de la variable de entorno
-        password: configService.get<string>('POSTGRES_PASSWORD'), // Usa ConfigService para obtener el valor de la variable de entorno
-        database: configService.get<string>('POSTGRES_DB'), // Usa ConfigService para obtener el valor de la variable de entorno
-        entities: ['dist/**/*.entity{.ts,.js}'],
-        synchronize: true,
-      }),
-      inject: [ConfigService], // Inyecta ConfigService para usarlo dentro de la función factory
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      host: 'localhost',
+      port: 5432,
+      username: 'postgres',
+      password: 'Daniel123',
+      database: 'PruebaPPI4',
+      entities: ['dist/**/*.entity{.ts,.js}'],
+      synchronize: true,
     }),
     TimezoneModule,
     BannerModule,
