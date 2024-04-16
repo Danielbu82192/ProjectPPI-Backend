@@ -28,13 +28,14 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'localhost',
+      host: 'ep-divine-pond-a43px6xv-pooler.us-east-1.aws.neon.tech',
       port: 5432,
-      username: 'postgres',
-      password: 'Daniel123',
-      database: 'PruebaPPI4',
+      username: 'default',
+      password: 'RIeT7yHrJvQ5',
+      database: 'verceldb',
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
+      ssl: { rejectUnauthorized: false }
     }),
     TimezoneModule,
     BannerModule,
