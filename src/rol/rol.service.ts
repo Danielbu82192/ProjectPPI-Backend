@@ -9,7 +9,7 @@ export class RolService {
   }
 
   findAll() {
-    return `This action returns all rol`;
+    return `pinches roles`;
   }
 
   findOne(id: number) {
