@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 // timezone.module.ts
 import { Module, Global } from '@nestjs/common';
 
@@ -7,7 +6,7 @@ import { Module, Global } from '@nestjs/common';
   providers: [
     {
       provide: 'TIMEZONE',
-      useValue: 'America/Bogota',
+      useValue: 'GMT',
     },
   ],
   exports: ['TIMEZONE'],

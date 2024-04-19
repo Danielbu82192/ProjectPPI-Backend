@@ -28,10 +28,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
   imports: [
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: 'ep-divine-pond-a43px6xv-pooler.us-east-1.aws.neon.tech',
+      host: 'ep-white-cloud-a40ddtuh-pooler.us-east-1.aws.neon.tech',
       port: 5432,
       username: 'default',
-      password: 'RIeT7yHrJvQ5',
+      password: 'zbtxc2Ns9qhj',
       database: 'verceldb',
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,

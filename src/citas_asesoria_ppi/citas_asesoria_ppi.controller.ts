@@ -27,6 +27,12 @@ export class CitasAsesoriaPpiController {
     return this.citasAsesoriaPpiService.findRangeEquipo(Fechainicio, FechaFin, Usuario);
   }
 
+  @Get('/Estado/:Fechainicio/:FechaFin/:Estado')
+  findRangeEstado(@Param('Fechainicio') Fechainicio: string, @Param('FechaFin') FechaFin: string, @Param('Estado') Estado: string) {
+    return this.citasAsesoriaPpiService.findRangeEstado(Fechainicio, FechaFin, Estado);
+  }
+
+
   @Get('/BuscarFechaHoraUsuario/:Fecha/:Hora/:Usuario')
   findFechaHora(@Param('Fecha') Fecha: string, @Param('Hora') Hora: string, @Param('Usuario') Usuario: string) {
     return this.citasAsesoriaPpiService.findFechaHora(Fecha, Hora, Usuario);
