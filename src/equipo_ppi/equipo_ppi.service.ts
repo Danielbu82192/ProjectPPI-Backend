@@ -16,15 +16,15 @@ export class EquipoPpiService {
     return 'This action adds a new equipoPpi';
   }
 
-  findAll() {
+  async findAll() {
     return this.repository.find();
   }
 
   async findOne(id: number) {
-    return await this.repository.find({where:{id}});
+    return await this.repository.find({ where: { id } });
   }
 
- async update(id: number, updateEquipoPpiDto: UpdateEquipoPpiDto) {
+  async update(id: number, updateEquipoPpiDto: UpdateEquipoPpiDto) {
     const existe = await this.repository.find({ where: { id } });
     if (!existe) {
       throw new NotFoundException('No encontrado');

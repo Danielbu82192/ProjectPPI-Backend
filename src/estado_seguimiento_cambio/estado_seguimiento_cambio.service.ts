@@ -1,11 +1,20 @@
 import { Injectable } from '@nestjs/common';
 import { CreateEstadoSeguimientoCambioDto } from './dto/create-estado_seguimiento_cambio.dto';
 import { UpdateEstadoSeguimientoCambioDto } from './dto/update-estado_seguimiento_cambio.dto';
+import { EstadoSeguimientoCambio } from './entities/estado_seguimiento_cambio.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class EstadoSeguimientoCambioService {
+  constructor(
+    @InjectRepository(EstadoSeguimientoCambio) private readonly repository: Repository<EstadoSeguimientoCambio> 
+  ) {
+  }
+
+
   create(createEstadoSeguimientoCambioDto: CreateEstadoSeguimientoCambioDto) {
-    return 'This action adds a new estadoSeguimientoCambio';
+    return this.repository.save(createEstadoSeguimientoCambioDto);
   }
 
   findAll() {

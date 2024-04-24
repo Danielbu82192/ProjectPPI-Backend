@@ -7,7 +7,7 @@ import { CitasAsesoriaPpi } from 'src/citas_asesoria_ppi/entities/citas_asesoria
 export class EquipoPpi {
   @PrimaryGeneratedColumn({ name: 'Equipo_PPI_ID' })
   id: number;
-
+ 
   @Column({ name: 'Codigo_Equipo', type: 'int' })
   codigoEquipo: number;
 

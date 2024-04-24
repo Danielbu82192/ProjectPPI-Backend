@@ -11,14 +11,14 @@ export class SeguimientoPpi {
   @Column({ name: 'Fecha_Creacion_Asesoria', type: 'timestamp with time zone' })
   fecha: Date;
 
-  @Column({ name: 'Compromiso_Asesoria', type: 'varchar', length: 255 })
-  compromiso: string;
+  @Column({ name: 'Compromiso_Asesoria', type: 'varchar', length: 255, nullable: true })
+  compromiso: string | null;
 
-  @Column({ name: 'Observacion_Asesoria', type: 'varchar', length: 255 })
-  observacion: string;
+  @Column({ name: 'Observacion_Asesoria', type: 'varchar', length: 255,nullable: true })
+  observacion: string | null;
 
-  @Column({ name: 'Semana_Asesoria', type: 'int' })
-  semana: number;
+  @Column({ name: 'Semana_Asesoria', type: 'int',nullable: true })
+  semana: number | null;
 
   @Column({ name: 'Asistencia_Asesoria', type: 'json' })
   asistencia: JSON;

@@ -5,13 +5,17 @@ import { UpdateEquipoUsuarioDto } from './dto/update-equipo_usuario.dto';
 
 @Controller('equipo-usuarios')
 export class EquipoUsuariosController {
-  constructor(private readonly equipoUsuariosService: EquipoUsuariosService) {}
+  constructor(private readonly equipoUsuariosService: EquipoUsuariosService) { }
 
   @Post()
   create(@Body() createEquipoUsuarioDto: CreateEquipoUsuarioDto) {
     return this.equipoUsuariosService.create(createEquipoUsuarioDto);
   }
 
+  @Get('/Estudiantes/')
+  findEstudiante() {
+    return this.equipoUsuariosService.findEstudiante();
+  }
   @Get()
   findAll() {
     return this.equipoUsuariosService.findAll();
@@ -22,10 +26,6 @@ export class EquipoUsuariosController {
     return this.equipoUsuariosService.findOne(+id);
   }
 
-  @Get('/Estudiantes/:id')
-  findEstudiante(@Param('id') id: string) {
-    return this.equipoUsuariosService.findEstudiante(+id);
-  }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateEquipoUsuarioDto: UpdateEquipoUsuarioDto) {

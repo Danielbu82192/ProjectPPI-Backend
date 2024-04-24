@@ -46,7 +46,7 @@
     @ManyToOne(() => EquipoPpi)
     @JoinColumn({ name: 'Equipo_PPI_ID' })
     equipocita: EquipoPpi;
-
+ 
     @ManyToOne(() => Usuario)
     @JoinColumn({ name: 'Usuario_ID' })
     usuariocitaequipo: Usuario;

@@ -8,7 +8,7 @@ import { EquipoPpiPjic } from 'src/equipo_ppi_pjic/entities/equipo_ppi_pjic.enti
 export class EquipoUsuario {
   @PrimaryGeneratedColumn({ name: 'Equipo_Usuario_ID' })
   id: number;
-
+ 
   @Column({ name: 'Codigo_Equipo', type: 'int' })
   codigoEquipo: number;
 

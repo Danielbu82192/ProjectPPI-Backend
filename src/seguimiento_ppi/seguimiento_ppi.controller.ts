@@ -22,6 +22,11 @@ export class SeguimientoPpiController {
     return this.seguimientoPpiService.findOne(+id);
   }
 
+  @Get('/Estudiantes/:id')
+  findEstudiantesByID(@Param('id') id: string) {
+    return this.seguimientoPpiService.findEstudiantesByID(+id);
+  }
+
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateSeguimientoPpiDto: UpdateSeguimientoPpiDto) {
     return this.seguimientoPpiService.update(+id, updateSeguimientoPpiDto);

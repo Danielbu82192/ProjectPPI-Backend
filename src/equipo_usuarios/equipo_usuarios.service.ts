@@ -24,12 +24,21 @@ export class EquipoUsuariosService {
     return `This action returns a #${id} equipoUsuario`;
   }
 
-  async findEstudiante(id: number) {
-    return this.repository
+  async findEstudiante() {
+    const resultados = await this.repository
       .createQueryBuilder('equipoUsuario')
-      .leftJoinAndSelect('equipoUsuario.usuario', 'usuario')
-      .where('equipoUsuario.codigoEquipo = :id', { id })
+      .leftJoinAndSelect('equipoUsuario.usuario', 'usuario') 
       .getMany();
+ 
+    const resultadosAgrupados = {};
+    resultados.forEach((resultado) => {
+      const key = resultado.codigoEquipo; 
+      if (!resultadosAgrupados[key]) {
+        resultadosAgrupados[key] = [];
+      }
+      resultadosAgrupados[key].push(resultado.usuario);
+    }); 
+    return resultadosAgrupados;
   }
   update(id: number, updateEquipoUsuarioDto: UpdateEquipoUsuarioDto) {
     return `This action updates a #${id} equipoUsuario`;
