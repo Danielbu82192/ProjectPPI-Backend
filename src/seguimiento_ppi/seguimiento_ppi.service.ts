@@ -29,7 +29,7 @@ export class SeguimientoPpiService {
       const EstadoSeguimientoCreacion = new EstadoSeguimientoCambio();
       EstadoSeguimientoCreacion.fecha = Creado.fecha;
       EstadoSeguimientoCreacion.estadoSeguimiento = estado;
-      EstadoSeguimientoCreacion.seguimiento = Creado; 
+      EstadoSeguimientoCreacion.seguimiento = Creado;
       return this.repositoryEstadoSeg.save(EstadoSeguimientoCreacion);
     }
     return null;
@@ -39,15 +39,36 @@ export class SeguimientoPpiService {
     return this.repository.find();
   }
 
-  async findOne(id: number) {
+  async finOne(id: number) {
     return await this.repository
       .createQueryBuilder('SeguimientoPpi')
+      .where('SeguimientoPpi.id = :id', { id: id })
+      .getMany();
+  }
+
+
+  async findByEquipo(id: number) {
+    const data = await this.repository
+      .createQueryBuilder('SeguimientoPpi')
       .leftJoinAndSelect('SeguimientoPpi.citas', 'CitasAsesoriaPpi')
-      .leftJoinAndSelect('SeguimientoPpi.seguimiento', 'EstadoSeguimientoCambio')
-      //.leftJoinAndSelect('EstadoSeguimientoCambio.estadoSeguimiento', 'EstadoSeguimiento')
       .leftJoinAndSelect('CitasAsesoriaPpi.equipocita', 'EquipoPpi')
       .where('EquipoPpi.codigoEquipo = :codigoEquipo', { codigoEquipo: id })
       .getMany();
+
+    for (let index = 0; index < data.length; index++) {
+      const element = data[index];
+      const estado = await this.repositoryEstadoSeg
+        .createQueryBuilder('EstadoSeguimientoCambio') 
+        .leftJoinAndSelect('EstadoSeguimientoCambio.estadoSeguimiento', 'EstadoSeguimiento')  
+        .where('EstadoSeguimientoCambio.seguimiento = :id', { id: element.id })
+        .getMany();
+      data[index]["estados"] = estado;
+    }
+
+    return data;
+
+
+
   }
 
   async findEstudiantesByID(id: number) {
@@ -72,6 +93,14 @@ export class SeguimientoPpiService {
     return resultado;
   }
   async update(id: number, updateSeguimientoPpiDto: UpdateSeguimientoPpiDto) {
+    const existe = await this.repository.find({ where: { id } });
+    if (!existe) {
+      throw new NotFoundException('No encontrado');
+    }
+    return this.repository.update(id, updateSeguimientoPpiDto);
+  }
+
+  async updateByAsistencia(id: number, updateSeguimientoPpiDto: UpdateSeguimientoPpiDto) {
     const existe = await this.repository.find({ where: { id } });
     if (!existe) {
       throw new NotFoundException('No encontrado');

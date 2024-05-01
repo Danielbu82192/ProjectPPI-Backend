@@ -12,12 +12,19 @@ export class EquipoPpiService {
     @InjectRepository(EquipoPpi) private readonly repository: Repository<EquipoPpi>) {
   }
 
-  create(createEquipoPpiDto: CreateEquipoPpiDto) {
-    return 'This action adds a new equipoPpi';
+  async create(createEquipoPpiDto: CreateEquipoPpiDto) {
+    return this.repository.save(createEquipoPpiDto);
   }
 
   async findAll() {
     return this.repository.find();
+  }
+
+  async findByEquipo(id: number) {
+    return await this.repository
+    .createQueryBuilder('equipoPpi')
+    .where('equipoPpi.codigoEquipo = :id', { id: id })
+    .getOne(); 
   }
 
   async findOne(id: number) {

@@ -17,9 +17,15 @@ export class SeguimientoPpiController {
     return this.seguimientoPpiService.findAll();
   }
 
+
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.seguimientoPpiService.findOne(+id);
+  findByEquipo(@Param('id') id: string) {
+    return this.seguimientoPpiService.findByEquipo(+id);
+  }
+
+  @Get('/id/:id')
+  findById(@Param('id') id: string) {
+    return this.seguimientoPpiService.finOne(+id);
   }
 
   @Get('/Estudiantes/:id')
@@ -32,6 +38,10 @@ export class SeguimientoPpiController {
     return this.seguimientoPpiService.update(+id, updateSeguimientoPpiDto);
   }
 
+  @Patch('/Asistencia/:id')
+  updateByAsistencia(@Param('id') id: string, @Body() updateSeguimientoPpiDto: UpdateSeguimientoPpiDto) {
+    return this.seguimientoPpiService.updateByAsistencia(+id, updateSeguimientoPpiDto);
+  }
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.seguimientoPpiService.remove(+id);

@@ -10,32 +10,36 @@ export class CitasAsesoriaPpiController {
   @Post()
   create(@Body() createCitasAsesoriaPpiDto: CreateCitasAsesoriaPpiDto) {
     return this.citasAsesoriaPpiService.create(createCitasAsesoriaPpiDto);
-  }
-
-  @Get()
-  findAll() {
-    return this.citasAsesoriaPpiService.findAll();
-  }
+  } 
 
   @Get(':Fechainicio/:FechaFin/:Usuario')
   findRangeAsesor(@Param('Fechainicio') Fechainicio: string, @Param('FechaFin') FechaFin: string, @Param('Usuario') Usuario: string) {
     return this.citasAsesoriaPpiService.findRangeAsesor(Fechainicio, FechaFin, Usuario);
   }
 
-  @Get('/Equipo/:Fechainicio/:FechaFin/:Usuario')
-  findRangeEquipo(@Param('Fechainicio') Fechainicio: string, @Param('FechaFin') FechaFin: string, @Param('Usuario') Usuario: string) {
-    return this.citasAsesoriaPpiService.findRangeEquipo(Fechainicio, FechaFin, Usuario);
+  @Get('/Equipo/:Usuario')
+  findRangeEquipo(@Param('Usuario') Usuario: string) {
+    return this.citasAsesoriaPpiService.findRangeEquipo( Usuario);
   }
 
   @Get('/Estado/:Fechainicio/:FechaFin/:Estado')
   findRangeEstado(@Param('Fechainicio') Fechainicio: string, @Param('FechaFin') FechaFin: string, @Param('Estado') Estado: string) {
     return this.citasAsesoriaPpiService.findRangeEstado(Fechainicio, FechaFin, Estado);
   }
+  @Get('/Seguimiento/:id')
+  findCitaBySeguimiento(@Param('id') id: number) {
+    return this.citasAsesoriaPpiService.findCitaBySeguimiento(id);
+  }
 
 
   @Get('/BuscarFechaHoraUsuario/:Fecha/:Hora/:Usuario')
   findFechaHora(@Param('Fecha') Fecha: string, @Param('Hora') Hora: string, @Param('Usuario') Usuario: string) {
     return this.citasAsesoriaPpiService.findFechaHora(Fecha, Hora, Usuario);
+  }
+
+  @Get()
+  findAll() {
+    return this.citasAsesoriaPpiService.findAll();
   }
 
   @Get(':id')

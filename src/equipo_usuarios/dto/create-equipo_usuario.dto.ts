@@ -1,1 +1,3 @@
-export class CreateEquipoUsuarioDto {}
+export class CreateEquipoUsuarioDto { 
+    id: number;  
+}

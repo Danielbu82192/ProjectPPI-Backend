@@ -17,6 +17,12 @@ export class EquipoPpiController {
     return this.equipoPpiService.findAll();
   }
 
+  @Get('/Equipo/:id')
+  findByEquipo(@Param('id') id: string) {
+    return this.equipoPpiService.findByEquipo(+id);
+  }
+
+  
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.equipoPpiService.findOne(+id);

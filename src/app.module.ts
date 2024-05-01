@@ -23,6 +23,7 @@ import { EquipoPpiModule } from './equipo_ppi/equipo_ppi.module';
 import { EquipoPpiPjicModule } from './equipo_ppi_pjic/equipo_ppi_pjic.module';
 import { TimezoneModule } from './timezone.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { SemanasModule } from './semanas/semanas.module';
 
 @Module({
   imports: [
@@ -57,6 +58,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     UsuarioModule,
     EquipoPpiModule,
     EquipoPpiPjicModule,
+    SemanasModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -17,21 +17,24 @@ export class UsuarioService {
   }
 
   findAsesor() {
-     return this.repository.createQueryBuilder('usuario')
-    .leftJoinAndSelect('usuario.rol', 'rol')
-    .where('rol.id = :rolId', { rolId: 1 })
-    .getMany(); 
+    return this.repository.createQueryBuilder('usuario')
+      .leftJoinAndSelect('usuario.rol', 'rol')
+      .leftJoinAndSelect('usuario.hora', 'HoraSemanal')
+      .where('rol.id = :rolId', { rolId: 1 })
+      .getMany();
   }
 
   findAll() {
     return this.repository.find();
- }
+  }
 
-  async Login(Correo: string, Contrasena: string) { 
-    return this.repository.find({where:{correo:Correo,clave:Contrasena}})  
+  async Login(Correo: string, Contrasena: string) {
+    return this.repository.find({ where: { correo: Correo, clave: Contrasena } })
   }
   findOne(id: number) {
-    return `This action returns a #${id} usuario`;
+    return this.repository.createQueryBuilder('usuario')
+      .where('usuario.id = :id', { id: id })
+      .getOne();
   }
 
   update(id: number, updateUsuarioDto: UpdateUsuarioDto) {

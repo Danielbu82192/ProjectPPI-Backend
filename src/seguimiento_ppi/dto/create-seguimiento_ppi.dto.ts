@@ -2,10 +2,10 @@ import { CitasAsesoriaPpi } from "src/citas_asesoria_ppi/entities/citas_asesoria
 
 export class CreateSeguimientoPpiDto { 
     id: number;
-    fecha: Date; 
+    fecha: Date;  
+    semana: string | null;
     compromiso: string | null;
-    observacion: string | null;
-    semana: number | null;
+    observacion: string | null; 
     asistencia: JSON;
     citas: CitasAsesoriaPpi;
 }
