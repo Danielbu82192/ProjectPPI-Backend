@@ -8,4 +8,10 @@ export class CreateSeguimientoPpiDto {
     observacion: string | null; 
     asistencia: JSON;
     citas: CitasAsesoriaPpi;
+    estudiante1: string | null; 
+    estudiante2: string | null; 
+    estudiante3: string | null; 
+    asistenciaEstudiante1: number | null;  
+    asistenciaEstudiante2: number | null;  
+    asistenciaEstudiante3: number | null; 
 }

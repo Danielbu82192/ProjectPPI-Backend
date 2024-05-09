@@ -13,7 +13,7 @@ export class EstadoSeguimientoCambioService {
   }
 
 
-  create(createEstadoSeguimientoCambioDto: CreateEstadoSeguimientoCambioDto) {
+ async  create(createEstadoSeguimientoCambioDto: CreateEstadoSeguimientoCambioDto) {
     return this.repository.save(createEstadoSeguimientoCambioDto);
   }
 

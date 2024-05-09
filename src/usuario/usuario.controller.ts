@@ -22,6 +22,16 @@ export class UsuarioController {
     return this.usuarioService.findAsesor();
   }
 
+  @Get('/correos/:correo') 
+  findCorreo(@Param('correo') correo: string) {
+    return this.usuarioService.findCorreo(correo);
+  }
+  
+  @Get('ExisteSesion')
+  finExisteSesion() {
+    return this.usuarioService.finExisteSesion();
+  }
+
   @Get(':Correo/:Contrasena')
   Login(@Param('Correo') Correo: string, @Param('Contrasena') Contrasena: string) {
     return this.usuarioService.Login(Correo, Contrasena);
@@ -30,13 +40,20 @@ export class UsuarioController {
   @Get(':id')
   findOne(@Param('id') id: string) {
     return this.usuarioService.findOne(+id);
-  }
+  }  
 
+
+  @Patch('/correo/:id')
+  updateSesion(@Param('id') id: string, @Body() updateUsuarioDto: UpdateUsuarioDto) {
+    return this.usuarioService.updateSesion(id, updateUsuarioDto);
+  }
+  
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateUsuarioDto: UpdateUsuarioDto) {
     return this.usuarioService.update(+id, updateUsuarioDto);
   }
  
+
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.usuarioService.remove(+id);

@@ -24,6 +24,8 @@ import { EquipoPpiPjicModule } from './equipo_ppi_pjic/equipo_ppi_pjic.module';
 import { TimezoneModule } from './timezone.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { SemanasModule } from './semanas/semanas.module';
+import { GoogleModule } from './api/api.module';
+import { NotificacionesModule } from './notificaciones/notificaciones.module';
 
 @Module({
   imports: [
@@ -38,6 +40,7 @@ import { SemanasModule } from './semanas/semanas.module';
       synchronize: true,
       ssl: { rejectUnauthorized: false }
     }),
+    GoogleModule,
     TimezoneModule,
     BannerModule,
     EstadoSeguimientoModule,
@@ -59,6 +62,7 @@ import { SemanasModule } from './semanas/semanas.module';
     EquipoPpiModule,
     EquipoPpiPjicModule,
     SemanasModule,
+    NotificacionesModule,
   ],
   controllers: [AppController],
   providers: [AppService],

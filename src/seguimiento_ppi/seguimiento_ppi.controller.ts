@@ -23,6 +23,11 @@ export class SeguimientoPpiController {
     return this.seguimientoPpiService.findByEquipo(+id);
   }
 
+  @Get('/Cita/:id')
+  findByCita(@Param('id') id: string) {
+    return this.seguimientoPpiService.findByCita(+id);
+  }
+
   @Get('/id/:id')
   findById(@Param('id') id: string) {
     return this.seguimientoPpiService.finOne(+id);
@@ -38,6 +43,11 @@ export class SeguimientoPpiController {
     return this.seguimientoPpiService.update(+id, updateSeguimientoPpiDto);
   }
 
+ @Patch('/CancelacionCita/:id')
+ updateCancelacionCita(@Param('id') id: string, @Body() updateSeguimientoPpiDto: UpdateSeguimientoPpiDto) {
+    return this.seguimientoPpiService.updateCancelacionCita(+id, updateSeguimientoPpiDto);
+  }
+  
   @Patch('/Asistencia/:id')
   updateByAsistencia(@Param('id') id: string, @Body() updateSeguimientoPpiDto: UpdateSeguimientoPpiDto) {
     return this.seguimientoPpiService.updateByAsistencia(+id, updateSeguimientoPpiDto);
