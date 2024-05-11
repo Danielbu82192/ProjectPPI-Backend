@@ -30,13 +30,13 @@ export class Usuario {
 
   @Column({ name: 'Usuario_Clave', type: 'varchar', length: 255 })
   clave: string;
-
+/*
   @Column({ name: 'Datos_Google', type: 'json', nullable: true })
   datosGoogle: object | null;
 
   @Column({ name: 'Token_Google', type: 'json', nullable: true })
   tokenGoogle: object | null;
-
+*/
   @ManyToOne(() => Rol)
   @JoinColumn({ name: 'Rol_ID' })
   rol: Rol;

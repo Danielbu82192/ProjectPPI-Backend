@@ -181,7 +181,7 @@ export class EquipoPpiService {
       hoja.range("A13:G13").style({ fill: { color: 'e2efd9' }, verticalAlignment: "middle", border: true, horizontalAlignment: 'center', bold: true, fontFamily: 'Arial', fontSize: 11, wrapText: true })
 
       const buffer = await libro.outputAsync();
-      const filePath = './public/Excels/prueba.xlsx';
+      const filePath = './public/Excels/Bitacoras.xlsx';
       fs.writeFileSync(filePath, buffer);
 
       return filePath;
@@ -194,8 +194,7 @@ export class EquipoPpiService {
 
       for (let index = 0; index < equipos.length; index++) {
         const equipo = equipos[index];
-        if (equipo) {
-          console.log(equipo.codigoEquipo.toString());
+        if (equipo) { 
           libro.addSheet(equipo.codigoEquipo.toString());
         }
       }
@@ -349,7 +348,7 @@ export class EquipoPpiService {
         }
       }
       const buffer = await libro.outputAsync();
-      const filePath = './public/Excels/prueba.xlsx';
+      const filePath = './public/Excels/Bitacoras.xlsx';
       fs.writeFileSync(filePath, buffer);
 
       return filePath;

@@ -15,8 +15,7 @@ export class CitasAsesoriaPpiService {
 
 
   async create(createCitasAsesoriaPpiDto: CreateCitasAsesoriaPpiDto) {
-    const creacion=await this.repository.save(createCitasAsesoriaPpiDto)
-    console.log(creacion)
+    const creacion=await this.repository.save(createCitasAsesoriaPpiDto) 
     return creacion.id;
   }
 
@@ -92,7 +91,7 @@ export class CitasAsesoriaPpiService {
       .leftJoinAndSelect('citas.usuariocitaequipo', 'usuariocitaequipo')
       .leftJoinAndSelect('citas.citas', 'citasRelacionadas')
       .where('equipocita.id = :userId', { userId: Usuario })
-      .orderBy('citas.id', 'ASC')
+      .orderBy('citas.id', 'DESC')
       .getMany();
     return citas;
   }
@@ -109,8 +108,7 @@ export class CitasAsesoriaPpiService {
       .where("DATE(citas.fecha AT TIME ZONE 'America/Bogota')  BETWEEN :start AND :end", { start: Fechainicio, end: FechaFin })
       .andWhere('equipocita.id = :userId', { userId: Usuario })
       .orderBy('citas.id', 'ASC')
-      .getMany();
-    console.log(citas)
+      .getMany(); 
     return citas;
   }
 

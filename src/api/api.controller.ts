@@ -46,7 +46,9 @@ export class GoogleController {
   @Post('create-event')
   async createEvent(@Body() body: {
     date: string, dateTime: string, attendees: string[], conferenceDataVersion: string
-  }) {
+  }) { 
+    console.log('adsfasdfasdfasdfasdfasdfas')
+    console.log(body)
     const { date, dateTime, attendees, conferenceDataVersion } = body;
     return this.googleService.createEvent(date, dateTime, attendees, conferenceDataVersion);
   }

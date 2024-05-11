@@ -46,13 +46,17 @@ export class GoogleService {
   }
    
   async createEvent(date: string, dateTime: string, attendees: string[], conferenceDataVersion: string) {
+    
     const calendar = google.calendar({ version: 'v3', auth: this.auth });
     let startDateTime = date + 'T' + dateTime; //format: AAAA-MM-DDThh:mm:ss
     let [hours, minutes] = dateTime.split(':').map(Number);
-    let endHours = minutes + 20 === 60 ? hours + 1 < 10 ? '0' + (hours + 1).toString() : (hours + 1).toString() : hours.toString;
+    let endHours = minutes + 20 === 60 ? hours + 1 < 10 ? '0' + (hours + 1).toString() : (hours + 1).toString() : hours.toString();
     let endMinutes = minutes + 20 === 60 ? '00' : (minutes + 20).toString();
     let endDateTime = date + 'T' + endHours + ':' + endMinutes + ':00';
     let eventSummary = conferenceDataVersion == '0' ? ' - Presencial' : ' - Remota';
+     
+
+
 
     const event = {
       colorId: '10',
@@ -81,17 +85,17 @@ export class GoogleService {
         ],
       },
     };
+ 
 
     const calendarResponse = await calendar.events.insert({
       calendarId: 'primary',
       requestBody: event,
-      conferenceDataVersion: conferenceDataVersion === '1' ? 1 : 0,
+      conferenceDataVersion: conferenceDataVersion.toString() === '1' ? 1 : 0,
     });
 
     const eventId = calendarResponse.data.id;
     const htmlLink = calendarResponse.data.htmlLink;
-    const meetLink = calendarResponse.data.hangoutLink;
-
+    const meetLink = calendarResponse.data.hangoutLink; 
     return { eventId, htmlLink, meetLink };
   }
 

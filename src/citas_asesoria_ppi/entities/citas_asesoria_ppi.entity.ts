@@ -28,6 +28,9 @@
     @Column({ name: 'Link_Cita', type: 'varchar', length: 255 })
     link: string;
 
+    @Column({ name: 'ID_Calendar', type: 'varchar', length: 255,nullable:true })
+    idCalendar: string | null;
+
     @Column({ name: 'Modificaciones_Cita', type: 'varchar', length: 255 })
     modificaciones: string;
 
