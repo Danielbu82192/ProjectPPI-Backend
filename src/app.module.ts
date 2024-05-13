@@ -26,6 +26,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { SemanasModule } from './semanas/semanas.module';
 import { GoogleModule } from './api/api.module';
 import { NotificacionesModule } from './notificaciones/notificaciones.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -39,6 +41,10 @@ import { NotificacionesModule } from './notificaciones/notificaciones.module';
       entities: ['dist/**/*.entity{.ts,.js}'],
       synchronize: true,
       ssl: { rejectUnauthorized: false }
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public'), // Ruta al directorio público
+      serveRoot: '/public', // Ruta base para servir los archivos
     }),
     GoogleModule,
     TimezoneModule,
@@ -67,4 +73,4 @@ import { NotificacionesModule } from './notificaciones/notificaciones.module';
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }

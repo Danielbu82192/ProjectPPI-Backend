@@ -7,9 +7,7 @@ import { diskStorage } from 'multer';
 import { fileFilter, fileNameCall } from './../helpers/images.helper';
 import { Banner } from './entities/banner.entity';
 
-// const imgPath = './imgStorage';
-const imgPath = 'F:/Universidad/10mo Semestre/Proyecto de grados/Estudios/Tailwin/prototipo1/public/Media/banner';
-const relativeImgPath = '/Media/banner';
+const relativeImgPath = '/public/Media/contenido';
 
 @Controller('banner')
 export class BannerController {
@@ -19,7 +17,7 @@ export class BannerController {
   @Post('upload-img')
   @UseInterceptors(FileInterceptor('file', {
     storage: diskStorage({
-      destination: imgPath,
+      destination: relativeImgPath,
       filename: fileNameCall
     }),
     fileFilter: fileFilter,
@@ -32,7 +30,7 @@ export class BannerController {
   @Post('create')
   @UseInterceptors(FileInterceptor('file', {
     storage: diskStorage({
-      destination: imgPath,
+      destination: relativeImgPath,
       filename: fileNameCall
     }),
     fileFilter: fileFilter,
@@ -60,7 +58,7 @@ export class BannerController {
   @Patch('update/:id')
   @UseInterceptors(FileInterceptor('file', {
     storage: diskStorage({
-      destination: imgPath,
+      destination: relativeImgPath,
       filename: fileNameCall
     }),
     fileFilter: fileFilter,
@@ -84,5 +82,4 @@ export class BannerController {
   async delete(@Param('id') id: number) {
     return await this.bannerService.delete(+id);
   }
-
 }
