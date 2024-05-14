@@ -11,20 +11,20 @@ export class EquipoPpi {
   @Column({ name: 'Codigo_Equipo', type: 'int' })
   codigoEquipo: number;
 
-  @Column({ name: 'Nombre_Proyecto', type: 'varchar', length: 300 })
-  nombre: string;
+  @Column({ name: 'Nombre_Proyecto', type: 'varchar', length: 2000 ,nullable:true})
+  nombre: string | null; 
 
-  @Column({ name: 'Descripcion_Proyecto', type: 'varchar', length: 500 })
-  descripcion: string;
+  @Column({ name: 'Descripcion_Proyecto', type: 'varchar', length: 2000 ,nullable:true})
+  descripcion: string | null; 
 
-  @Column({ name: 'Alcance_Proyecto', type: 'varchar', length: 500 })
-  alcance: string;
+  @Column({ name: 'Alcance_Proyecto', type: 'varchar', length: 2000 ,nullable:true})
+  alcance: string | null; 
 
-  @Column({ name: 'Alcance_Socializacion_Uno', type: 'varchar', length: 500 })
-  socializacionuno: string;
+  @Column({ name: 'Alcance_Socializacion_Uno', type: 'varchar', length: 2000 ,nullable:true})
+  socializacionuno: string | null; 
 
-  @Column({ name: 'Alcance_Socializacion_Dos', type: 'varchar', length: 500 })
-  socializaciondos: string;
+  @Column({ name: 'Alcance_Socializacion_Dos', type: 'varchar', length: 2000 ,nullable:true})
+  socializaciondos: string | null; 
 
   @Column({ type: 'json', nullable: true, name: 'Canceladas' })
   canceladas: JSON;

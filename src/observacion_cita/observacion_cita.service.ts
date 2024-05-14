@@ -1,15 +1,24 @@
 import { Injectable } from '@nestjs/common';
 import { CreateObservacionCitaDto } from './dto/create-observacion_cita.dto';
 import { UpdateObservacionCitaDto } from './dto/update-observacion_cita.dto';
+import { ObservacionCita } from './entities/observacion_cita.entity';
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
 
 @Injectable()
 export class ObservacionCitaService {
+
+  constructor(
+    @InjectRepository(ObservacionCita) private readonly repository: Repository<ObservacionCita>
+  ) {
+  }
+
   create(createObservacionCitaDto: CreateObservacionCitaDto) {
     return 'This action adds a new observacionCita';
   }
 
-  findAll() {
-    return `This action returns all observacionCita`;
+  async findAll() {
+    return this.repository.find(); 
   }
 
   findOne(id: number) {

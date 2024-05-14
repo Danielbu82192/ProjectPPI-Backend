@@ -5,10 +5,7 @@ import { Usuario } from 'src/usuario/entities/usuario.entity';
 @Entity({ name: 'Hora_Semanal' })
 export class HoraSemanal {
   @PrimaryGeneratedColumn({ name: 'Hora_Semanal_ID' })
-  id: number;
-
-  @Column({ name: 'Asignatura_Nombre', type: 'varchar', length: 100 })
-  nombre: string;
+  id: number; 
 
   @Column({ name: 'Horas_Asignadas', type: 'smallint' })
   horasAsignadas: number;

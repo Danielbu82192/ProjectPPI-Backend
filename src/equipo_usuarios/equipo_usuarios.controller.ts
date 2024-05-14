@@ -17,9 +17,9 @@ export class EquipoUsuariosController {
     return this.equipoUsuariosService.findEstudiante();
   }
   
-  @Get('/EstudiantesBitacora/:Correo/:Contrasena')
-  findBitacoraByEstudiante(@Param('Correo') Correo: string, @Param('Contrasena') Contrasena: string) {
-    return this.equipoUsuariosService.findBitacoraByEstudiante(Correo, Contrasena);
+  @Get('/EstudiantesBitacora/:Correo')
+  findBitacoraByEstudiante(@Param('Correo') Correo: string) {
+    return this.equipoUsuariosService.findBitacoraByEstudiante(Correo);
   }
 
   

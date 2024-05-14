@@ -25,6 +25,7 @@ export class CitasAsesoriaPpiService {
       .leftJoinAndSelect('Citas_Asesoria_PPI.estadoCita', 'Estado_Cita')
       .leftJoinAndSelect('Citas_Asesoria_PPI.usuariocitaequipo', 'usuario')
       .leftJoinAndSelect('Citas_Asesoria_PPI.equipocita', 'equipoPpi')
+      .leftJoinAndSelect('Citas_Asesoria_PPI.observacionCita', 'ObservacionCita')
       .getMany();
     return citas;
   }

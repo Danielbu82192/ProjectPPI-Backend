@@ -144,31 +144,23 @@ export class SeguimientoPpiService {
     return this.repository.update(id, updateSeguimientoPpiDto);
   }
 
-  async remove(id: number) {
-    console.log(id)
+  async remove(id: number) { 
     const exist = await this.repository
       .createQueryBuilder('SeguimientoPpi')
       .where('SeguimientoPpi.citas = :citas', { citas: id })
       .getOne()
-
-    console.log(1)
+ 
     const cita = await this.repositoryCita
       .createQueryBuilder('cita')
       .where('cita.id = :id', { id: id })
       .getOne()
-
-    console.log(2)
+ 
     const seguimientoCambio = await this.repositoryEstadoSeg
       .createQueryBuilder('seguimientoCambio')
       .where('seguimientoCambio.seguimiento = :seguimiento', { seguimiento: exist.id })
       .andWhere("DATE(seguimientoCambio.fecha AT TIME ZONE 'America/Bogota') = :fecha", { fecha: cita.fecha })
       .getOne()
-
-    console.log(3)
-    console.log(exist)
-    console.log(cita)
-    console.log(seguimientoCambio)
-
+ 
     if (!exist || !seguimientoCambio) {
       throw new NotFoundException();
     }
@@ -181,3 +173,4 @@ export class SeguimientoPpiService {
       return false
   }
 }
+ 

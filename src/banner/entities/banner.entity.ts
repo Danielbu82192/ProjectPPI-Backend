@@ -6,8 +6,8 @@ export class Banner {
   @PrimaryGeneratedColumn({ name: 'Banner_ID' })
   id: number;
 
-  @Column({ name: 'Banner_Name', type: 'varchar',nullable:true })
-  nombre: string;
+  @Column({ name: 'Banner_Name', type: 'varchar'})
+  nombre: string|null;
 
   @Column({ name: 'Banner_Estado', type: 'smallint', default: 0 })
   estado: number; // 0: Inactivo, 1: Activo

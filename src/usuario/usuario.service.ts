@@ -24,23 +24,13 @@ export class UsuarioService {
       .where('rol.id = :rolId', { rolId: 3 })
       .getMany();
   }
-
-  async finExisteSesion() {
-    return this.configService.get<string>('CUENTA_GOOGLE');
-  }
+ 
+   
 
   async findAll() {
     return this.repository.find();
-  }
+  } 
 
-  async Login(Correo: string, Contrasena: string) {
-    return this.repository.createQueryBuilder('usuario')
-      .leftJoinAndSelect('usuario.hora', 'HoraSemanal')
-      .leftJoinAndSelect('usuario.rol', 'rol')
-      .where('usuario.correo = :correo', { correo: Correo })
-      .andWhere('usuario.clave = :clave', { clave: Contrasena })
-      .getOne()
-  }
   async findOne(id: number) {
     return this.repository.createQueryBuilder('usuario')
       .leftJoinAndSelect('usuario.hora', 'HoraSemanal')
@@ -56,6 +46,7 @@ export class UsuarioService {
       .where('usuario.correo = :correo', { correo: correo })
       .getOne();
   }
+  
   update(id: number, updateUsuarioDto: UpdateUsuarioDto) {
     return `kk`;
   }

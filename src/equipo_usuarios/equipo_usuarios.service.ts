@@ -29,12 +29,11 @@ export class EquipoUsuariosService {
     return `This action returns a #${id} equipoUsuario`;
   }
 
-  async findBitacoraByEstudiante(Correo: string, Contrasena: string) {
+  async findBitacoraByEstudiante(Correo: string) {
     const EquipoUsuario = await this.repository
       .createQueryBuilder("equipoUsuario")
       .leftJoinAndSelect("equipoUsuario.usuario", "usuario")
       .where('usuario.correo = :correo', { correo: Correo })
-      .andWhere('usuario.clave = :contrasena', { contrasena: Contrasena })
       .getOne();
 
     if (EquipoUsuario) {
