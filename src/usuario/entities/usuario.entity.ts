@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import {
   Column,
   Entity,
@@ -28,9 +27,9 @@ export class Usuario {
   @Column({ name: 'Usuario_Correo', type: 'varchar', length: 255 })
   correo: string;
 
-  @Column({ name: 'Usuario_Clave', type: 'varchar', length: 255 })
+ /* @Column({ name: 'Usuario_Clave', type: 'varchar', length: 255 })
   clave: string;
-/*
+
   @Column({ name: 'Datos_Google', type: 'json', nullable: true })
   datosGoogle: object | null;
 

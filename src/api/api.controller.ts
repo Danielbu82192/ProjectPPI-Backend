@@ -18,8 +18,6 @@ export class GoogleController {
     return await this.googleService.getUserInfo();
   }
 
-
-
   //Retorna la informacion del usuario
   @Get('auth/callback/google')
   async authCallback(@Query('code') code: string) {
@@ -46,7 +44,7 @@ export class GoogleController {
   @Post('create-event')
   async createEvent(@Body() body: {
     date: string, dateTime: string, attendees: string[], conferenceDataVersion: string
-  }) { 
+  }) {
     console.log('adsfasdfasdfasdfasdfasdfas')
     console.log(body)
     const { date, dateTime, attendees, conferenceDataVersion } = body;
@@ -55,9 +53,9 @@ export class GoogleController {
 
   //elimnar evento
   @Post('delete-event')
-  async deleteEvent(@Body() body: { eventId: string }) {
-    const { eventId } = body;
-    return this.googleService.deleteEvent(eventId);
+  async deleteEvent(@Body() body: { eventId: string, cause: string }) {
+    const { eventId, cause } = body;
+    return this.googleService.deleteEvent(eventId, cause);
   }
 
   //cerrar sesion
@@ -77,4 +75,11 @@ export class GoogleController {
     }
     return { isSessionActive };
   }
+
+  @Post('send-email')
+  async sendEmail(@Body() body: { recipient: string[], userName: string, dateDay: string, cause: string }) {
+    const { recipient, userName, dateDay, cause } = body;
+    return await this.googleService.sendEmail(recipient, dateDay, cause);
+  }
+
 }

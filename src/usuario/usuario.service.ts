@@ -52,7 +52,7 @@ export class UsuarioService {
     return this.repository.createQueryBuilder('usuario')
       .leftJoinAndSelect('usuario.rol', 'Rol')
       .leftJoinAndSelect('usuario.hora', 'HoraSemanal')
-      .leftJoinAndSelect('usuario.usuario', 'EquipoUsuario')
+      .leftJoinAndSelect('usuario.usuario', 'EquipoUsuario')  
       .where('usuario.correo = :correo', { correo: correo })
       .getOne();
   }
