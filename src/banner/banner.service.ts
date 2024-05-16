@@ -9,13 +9,16 @@ import { format } from 'date-fns';
 @Injectable()
 export class BannerService {
   constructor(
-    @InjectRepository(Banner) private bannerRepository: Repository<Banner>,
+    @InjectRepository(Banner)
+    private bannerRepository: Repository<Banner>,
+
   ) { }
 
   async findAllVisiblesByType(tipoBanner: number) {
-    const CurrentDateaux = new Date();
-    CurrentDateaux.setUTCHours(CurrentDateaux.getUTCHours() - 5);
-    const currentDate = format(CurrentDateaux, 'yyyy-MM-dd');
+    const CurrentDateaux = new Date(); 
+    CurrentDateaux.setUTCHours(CurrentDateaux.getUTCHours() - 5); 
+    const currentDate = format(CurrentDateaux, 'yyyy-MM-dd'); 
+    //const currentDate = DateTime.now().setZone('America/Bogota').toFormat('yyyy-MM-dd'); // Date format'YYYY-MM-DD'
     const banners = await this.bannerRepository
       .createQueryBuilder('banner')
       .where('banner.tipoBanner = :tipoBanner', { tipoBanner })

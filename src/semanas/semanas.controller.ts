@@ -27,8 +27,13 @@ export class SemanasController {
     return this.semanasService.update(+id, updateSemanaDto);
   }
 
+  @Delete('/eliminarTodo/')
+  removeAll() {
+    return this.semanasService.removeAll();
+  }
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.semanasService.remove(+id);
   }
+
 }

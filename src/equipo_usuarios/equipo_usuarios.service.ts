@@ -33,7 +33,7 @@ export class EquipoUsuariosService {
     const EquipoUsuario = await this.repository
       .createQueryBuilder("equipoUsuario")
       .leftJoinAndSelect("equipoUsuario.usuario", "usuario")
-      .where('usuario.correo = :correo', { correo: Correo })
+      .where('usuario.correo = :correo', { correo: Correo }) 
       .getOne();
 
     if (EquipoUsuario) {
@@ -96,13 +96,12 @@ export class EquipoUsuariosService {
     return resultadosAgrupados;
   }
 
-  async findEstudianteBitacoraModSol() {
+  async findEstudianteBitacoraModSol(id: string) {
     const resultados = await this.repositoryEquipoPJIC
-      .createQueryBuilder('EquipoPpiPjic')
-      .leftJoinAndSelect('EquipoPpiPjic.usuariopjic', 'usuario')
+      .createQueryBuilder('EquipoPpiPjic') 
       .leftJoinAndSelect('EquipoPpiPjic.equipousuariopjic', 'EquipoUsuario')
-      .where('EquipoUsuario.codigoEquipo = :id', { id: 101 })
-      .getOne();
+      .where('EquipoPpiPjic.usuariopjic = :id', { id: id })
+      .getMany();
     return resultados;
   }
 

@@ -7,24 +7,25 @@ import { CitasAsesoriaPpi } from 'src/citas_asesoria_ppi/entities/citas_asesoria
 export class EquipoPpi {
   @PrimaryGeneratedColumn({ name: 'Equipo_PPI_ID' })
   id: number;
- 
+
   @Column({ name: 'Codigo_Equipo', type: 'int' })
   codigoEquipo: number;
 
-  @Column({ name: 'Nombre_Proyecto', type: 'varchar', length: 2000 ,nullable:true})
-  nombre: string | null; 
+  @Column({ name: 'Nombre_Proyecto', type: 'varchar', nullable: true })
 
-  @Column({ name: 'Descripcion_Proyecto', type: 'varchar', length: 2000 ,nullable:true})
-  descripcion: string | null; 
+  nombre: string;
 
-  @Column({ name: 'Alcance_Proyecto', type: 'varchar', length: 2000 ,nullable:true})
-  alcance: string | null; 
+  @Column({ name: 'Descripcion_Proyecto', type: 'varchar', nullable: true })
+  descripcion: string;
 
-  @Column({ name: 'Alcance_Socializacion_Uno', type: 'varchar', length: 2000 ,nullable:true})
-  socializacionuno: string | null; 
+  @Column({ name: 'Alcance_Proyecto', type: 'varchar', nullable: true })
+  alcance: string;
 
-  @Column({ name: 'Alcance_Socializacion_Dos', type: 'varchar', length: 2000 ,nullable:true})
-  socializaciondos: string | null; 
+  @Column({ name: 'Alcance_Socializacion_Uno', type: 'varchar', nullable: true  })
+  socializacionuno: string;
+
+  @Column({ name: 'Alcance_Socializacion_Dos', type: 'varchar', nullable: true })
+  socializaciondos: string;
 
   @Column({ type: 'json', nullable: true, name: 'Canceladas' })
   canceladas: JSON;

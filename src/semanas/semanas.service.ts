@@ -43,4 +43,7 @@ export class SemanasService {
   remove(id: number) {
     return `This action removes a #${id} semana`;
   }
+  async removeAll() {
+    return await this.repository.delete({}); 
+  }
 }

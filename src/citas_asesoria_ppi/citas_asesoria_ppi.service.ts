@@ -25,7 +25,6 @@ export class CitasAsesoriaPpiService {
       .leftJoinAndSelect('Citas_Asesoria_PPI.estadoCita', 'Estado_Cita')
       .leftJoinAndSelect('Citas_Asesoria_PPI.usuariocitaequipo', 'usuario')
       .leftJoinAndSelect('Citas_Asesoria_PPI.equipocita', 'equipoPpi')
-      .leftJoinAndSelect('Citas_Asesoria_PPI.observacionCita', 'ObservacionCita')
       .getMany();
     return citas;
   }
@@ -91,7 +90,7 @@ export class CitasAsesoriaPpiService {
       .leftJoinAndSelect('citas.equipocita', 'equipocita')
       .leftJoinAndSelect('citas.usuariocitaequipo', 'usuariocitaequipo')
       .leftJoinAndSelect('citas.citas', 'citasRelacionadas')
-      .where('equipocita.id = :userId', { userId: Usuario })
+      .where('equipocita.codigoEquipo = :userId', { userId: Usuario })
       .orderBy('citas.id', 'DESC')
       .getMany();
     return citas;
@@ -114,7 +113,6 @@ export class CitasAsesoriaPpiService {
   }
 
   async findFechaHora(Fecha: string, Hora: string, Usuario: string) {
-
     const citas = await this.repository
       .createQueryBuilder('cita')
       .leftJoinAndSelect('cita.usuariocitaequipo', 'usuariocitaequipo')

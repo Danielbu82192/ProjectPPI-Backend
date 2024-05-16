@@ -28,9 +28,9 @@ export class EquipoUsuariosController {
     return this.equipoUsuariosService.findEstudianteBitacora();
   }
 
-  @Get('/BitacoraModSol/')
-  findEstudianteBitacoraModSol() {
-    return this.equipoUsuariosService.findEstudianteBitacoraModSol();
+  @Get('/BitacoraModSol/:id')
+  findEstudianteBitacoraModSol(@Param('id') id: string) {
+    return this.equipoUsuariosService.findEstudianteBitacoraModSol(id);
   }
   @Get()
   findAll() {

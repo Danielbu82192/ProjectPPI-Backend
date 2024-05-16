@@ -3,7 +3,7 @@ import { CreateEquipoPpiDto } from './dto/create-equipo_ppi.dto';
 import { UpdateEquipoPpiDto } from './dto/update-equipo_ppi.dto';
 import { EquipoPpi } from './entities/equipo_ppi.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, Tree } from 'typeorm';
 import * as fs from 'fs';
 import { EquipoPpiPjic } from 'src/equipo_ppi_pjic/entities/equipo_ppi_pjic.entity';
 import { Asignatura } from 'src/asignatura/entities/asignatura.entity';
